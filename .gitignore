@@ -1,0 +1,14 @@
+# Hugo build output
+/public/
+/resources/_gen/
+
+# Hugo lock file
+/.hugo_build.lock
+
+# Local temp files
+/.codex-temp/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+Desktop.ini

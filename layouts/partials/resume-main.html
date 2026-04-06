@@ -1,0 +1,81 @@
+{{ with .Params.experience }}
+  {{ if gt (len .) 0 }}
+    <section class="card section-block">
+      <div class="section-heading">
+        <p class="eyebrow">Journey</p>
+        <h2>Experience</h2>
+      </div>
+      <div class="timeline">
+        {{ range . }}
+          <article class="timeline__item">
+            <div class="timeline__topline">
+              <div>
+                {{ with .role }}<h3>{{ . }}</h3>{{ end }}
+                {{ with .company }}<p class="muted">{{ . }}</p>{{ end }}
+              </div>
+              {{ with .period }}<p class="pill">{{ . }}</p>{{ end }}
+            </div>
+            {{ with .positions }}
+              {{ if gt (len .) 0 }}
+                <div class="role-history">
+                  {{ range . }}
+                    <article class="role-history__item">
+                      <div class="role-history__top">
+                        {{ with .title }}<strong>{{ . }}</strong>{{ end }}
+                        {{ with .period }}<span>{{ . }}</span>{{ end }}
+                      </div>
+                      {{ with .highlights }}
+                        {{ if gt (len .) 0 }}
+                          <ul class="bullet-list bullet-list--compact">
+                            {{ range . }}
+                              {{ with . }}<li>{{ . }}</li>{{ end }}
+                            {{ end }}
+                          </ul>
+                        {{ end }}
+                      {{ end }}
+                    </article>
+                  {{ end }}
+                </div>
+              {{ end }}
+            {{ end }}
+            {{ if not .positions }}
+              {{ with .highlights }}
+                {{ if gt (len .) 0 }}
+                  <ul class="bullet-list">
+                    {{ range . }}
+                      {{ with . }}<li>{{ . }}</li>{{ end }}
+                    {{ end }}
+                  </ul>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          </article>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+{{ end }}
+
+{{ with .Params.projects }}
+  {{ if gt (len .) 0 }}
+    <section class="card section-block">
+      <div class="section-heading">
+        <p class="eyebrow">Selected Work</p>
+        <h2>Projects</h2>
+      </div>
+      {{ with $.Params.projectsIntro }}<p class="section-intro">{{ . }}</p>{{ end }}
+      <div class="project-list">
+        {{ range . }}
+          <article class="project-item">
+            <div class="project-item__header">
+              {{ with .title }}<h3>{{ . }}</h3>{{ end }}
+              {{ with .url }}<a href="{{ . }}" target="_blank" rel="noreferrer">Visit</a>{{ end }}
+            </div>
+            {{ with .tagline }}<p class="muted strong">{{ . }}</p>{{ end }}
+            {{ with .description }}<div>{{ . | markdownify }}</div>{{ end }}
+          </article>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+{{ end }}

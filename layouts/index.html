@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ .Title }}</title>
+    <meta name="description" content="{{ with .Params.summary }}{{ . | plainify | truncate 160 }}{{ else }}Resume{{ end }}" />
+    {{ $styles := resources.Get "css/main.css" | minify | fingerprint }}
+    {{ $themeScript := resources.Get "js/theme.js" | minify | fingerprint }}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png?v=2" />
+    <link rel="shortcut icon" href="/favicon.png?v=2" />
+    <link rel="apple-touch-icon" href="/favicon.png?v=2" />
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" />
+    <script src="{{ $themeScript.RelPermalink }}" integrity="{{ $themeScript.Data.Integrity }}"></script>
+  </head>
+  <body>
+    {{ $sidebarRight := ne .Params.sidebarPosition "left" }}
+    <div class="page-shell">
+      <main class="resume {{ if $sidebarRight }}resume--sidebar-right{{ else }}resume--sidebar-left{{ end }}">
+        <div class="utility-bar">
+          <p class="utility-bar__label">Technical Resume</p>
+          <div class="utility-bar__actions">
+            <button class="download-toggle" type="button" data-download-resume aria-label="Download resume as PDF">
+              Download Resume
+            </button>
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle night mode">
+              <span class="theme-toggle__text" data-theme-label>Night mode</span>
+            </button>
+          </div>
+        </div>
+        <section class="hero card">
+          <div class="hero__inner">
+            <div class="hero__layout">
+              <div class="hero__content">
+                {{ with .Params.name }}<h1>{{ . }}</h1>{{ end }}
+                {{ with .Params.tagline }}<p class="hero__tagline">{{ . }}</p>{{ end }}
+                {{ with .Params.summary }}<div class="hero__summary">{{ . | markdownify }}</div>{{ end }}
+
+                <div class="hero__meta">
+                  {{ with .Params.email }}<a href="mailto:{{ . }}">{{ . }}</a>{{ end }}
+                  {{ with .Params.website }}<a href="{{ . }}" target="_blank" rel="noreferrer">{{ replaceRE "^https?://" "" . }}</a>{{ end }}
+                  {{ with .Params.phone }}<span>{{ . }}</span>{{ end }}
+                </div>
+              </div>
+
+              {{ with .Params.avatar }}
+                <div class="hero__portrait">
+                  <img src="{{ . }}" alt="{{ $.Params.name }}" />
+                </div>
+              {{ end }}
+            </div>
+          </div>
+        </section>
+
+        {{ if $sidebarRight }}
+          <div class="content-grid">
+            <div class="content-grid__main">
+              {{ partial "resume-main.html" . }}
+            </div>
+            <aside class="content-grid__side">
+              {{ partial "resume-sidebar.html" . }}
+            </aside>
+          </div>
+        {{ else }}
+          <div class="content-grid">
+            <aside class="content-grid__side">
+              {{ partial "resume-sidebar.html" . }}
+            </aside>
+            <div class="content-grid__main">
+              {{ partial "resume-main.html" . }}
+            </div>
+          </div>
+        {{ end }}
+
+        {{ with .Params.blog }}
+          <footer class="site-footer">
+            <p>A more personal side of me lives here: <a href="{{ . }}" target="_blank" rel="noreferrer">{{ replaceRE "^https?://" "" . }}</a></p>
+          </footer>
+        {{ end }}
+      </main>
+    </div>
+  </body>
+</html>

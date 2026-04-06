@@ -1,0 +1,152 @@
+#
+# Be aware that even a small syntax error here can lead to failures in output.
+#
+
+sidebar:
+  position: right # position of the sidebar : left or right
+  about: False # set to False or comment line if you want to remove the "how to use?" in the sidebar
+  education: True # set to False if you want education in main section instead of in sidebar
+
+  # Profile information
+  name: Bobby Ananta Dioriza
+  tagline: Technical Lead | Vibe Coder
+  avatar: 1597739542302.jpg  #place a 100x100 picture inside /assets/images/ folder and provide the name of the file below
+
+  # Sidebar links
+  email: bobby.dioriza@gmail.com
+  phone: 085795701967
+  timezone: Jakarta (GMT+7)
+  citizenship: Indonesia
+  website: https://bobby.dioriza.com # Include the full website URL, including "http://" or "https://".
+  linkedin: bobananta
+  xing:
+  github: anfieldlad
+  telegram: # add your nickname without '@' sign
+  gitlab:
+  bitbucket:
+  bluesky:
+  twitter: '@bobby_dioriza'
+  stack-overflow: # Number/Username, e.g. 123456/alandoe
+  codewars:
+  goodreads: # Number-Username, e.g. 123456-alandoe
+  mastodon: # Please include your full Mastodon link here.
+  hackerrank: # Please provide your HackerRank username.
+  leetcode: # Please provide your LeetCode username.
+  pdf: # Add a PDF link here if you want to include a PDF custom version in your resume.
+
+  languages:
+    title: Languages
+    info:
+    - idiom: Indonesia
+      level: Native
+
+    - idiom: English
+      level: Professional
+
+career-profile:
+  title: Career Profile
+  summary: |
+    I am a Software Engineer with over a decade of experience building scalable applications across the financial sector. I specialize in designing maintainable systems and leading teams to deliver business-driven software. By integrating AI-assisted development into my workflow, I accelerate prototyping and code reviews, allowing me to focus entirely on architecture and system integrity. I leverage AI as a force multiplier to amplify creativity, consistency, and delivery speed.
+education:
+  title: Education
+  info:
+  - degree: BEng in Informatics
+    university: Telkom University
+    time: 2008 - 2013
+
+experiences:
+  title: Experiences
+  info:
+  - role: Technical Lead
+    time: July 2021 - Present
+    company: Adira Finance
+    details: |
+        - As a Technical Lead, I supervise a team of about 4 to 8 developers, directing them in the development and maintenance of critical applications such as Ad1Survey and Ad1Checking. 
+        - Ad1Survey, a mobile app part of loan origination, integrates Flutter for the frontend and Java Spring Boot for the backend. 
+        - Ad1Checking is a backend system that aggregates third-party data from sources like Dukcapil, SLIK, CBI, and Pefindo, playing a vital role in our credit decision engine. 
+        - My responsibilities include reviewing code, assigning tasks, and shaping the technical direction for the team.
+  - role: Lead Software Developer
+    time: August 2020 - July 2021
+    company: PT Central Asia Financial (CAF)
+    details: |
+        - Led a team in transitioning from legacy systems to a modern core insurance system, using Java and MongoDB. 
+        - Optimized the data migration process from MySQL to MongoDB, ensuring seamless and secure data flow across the organization.
+  - role: Software Developer
+    time: September 2018 - August 2020
+    company: PT Central Asia Financial (CAF)
+    details: |
+        - Maintained the existing core insurance system built with VB .NET and MySQL, ensuring smooth day-to-day operations.
+        - Contributed to the development of a new core insurance system using Java and MongoDB.
+        - Led the design and implementation of a data migration system, successfully moving parameters and transaction data from MySQL to MongoDB.
+  - role: System Analyst
+    time: August 2016 - August 2018
+    company: Bank Sahabat Sampoerna
+    details: |
+        - Maintained the Loan Origination System (LOS) for Sampoerna Financial Group, supporting both Bank Sahabat Sampoerna and Sahabat UKM. 
+        - Translated user requirements into technical specifications and contributed to system development using C# .NET and SQL Server.
+        - Led the analysis and development of an E-KTP gateway, integrating Bank Sahabat Sampoerna's internal systems with Dukcapil to enhance the bank’s KYC processes.
+  - role: Software Developer
+    time: January 2016 - August 2016
+    company: PT. Intikom Berlian Mustika
+    details: |
+        - Assigned as a .NET Developer for PT Indonesia Infrastructure Finance, contributing to high-impact financial projects.
+        - Developed software solutions specializing in C# .NET and MS SQL Server.
+  - role: Software Developer
+    time: July 2015 - December 2015
+    company: PT Trengginas Daya Insani
+    details: |
+        - Assigned as an IT Software Developer at PT Bank Sahabat Sampoerna.
+        - Developed and enhanced the Loan Origination System (LOS) using C# .NET and MS SQL Server.
+  - role: Software Developer
+    time: July 2013 - June 2015
+    company: PT Xsis Mitra Utama
+    details: |
+        - Assigned as a PL/SQL Developer at PT Fujitsu Indonesia for four months and as a .NET Developer at PT Tower Bersama Group for one and a half years.
+        - Developed software solutions using C# .NET, MS SQL Server, and Oracle PL/SQL.
+
+
+projects:
+  title: Projects
+  intro: >
+    Here are some of my recent AI-driven side projects.
+  assignments:
+  - title: Breaking BAD (Bot Answering Dialogue)
+    link: https://breaking.badai.tech/
+    tagline: RAG Chatbot for Document Q&A
+    description: |
+      An AI-powered Retrieval-Augmented Generation (RAG) chatbot designed for question-answering over PDF documents with a unique "Breaking Bad" theme. 
+      Direct chat is available at [breaking.badai.tech/chat](https://breaking.badai.tech/chat). *(Note: Please upload dummy documents only!)*
+  - title: BAD CORE (Business Automated Docs)
+    link: https://core.badai.tech/
+    tagline: LLM-Powered OCR Engine for Indonesian ID Cards
+    description: |
+      A specialized OCR engine utilizing Large Language Models to accurately read and extract data from Indonesian Identity Cards (e-KTP). 
+      *(Note: Strictly use dummy KTP data!)*
+
+skills:
+  title: Skills &amp; Proficiency
+
+  toolset:
+  - name: Python
+    level: 70%
+
+  - name: .NET
+    level: 80%
+    
+  - name: Java
+    level: 80%
+
+  - name: Golang
+    level: 70%
+
+  - name: MS SQL Server
+    level: 90%
+
+  - name: Postgres
+    level: 90%
+
+  - name: MongoDB
+    level: 80%
+
+footer: >
+  Designed with <i class="fas fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank" rel="nofollow">Xiaoying Riley</a>

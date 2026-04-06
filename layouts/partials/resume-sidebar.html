@@ -1,0 +1,89 @@
+{{ $p := .Params }}
+
+<section class="card section-block sidebar-card">
+  {{ if or $p.email $p.phone $p.timezone $p.citizenship $p.website $p.linkedin $p.github $p.twitter }}
+    <div class="section-heading">
+      <p class="eyebrow">Contact</p>
+      <h2>Details</h2>
+    </div>
+    <ul class="meta-list">
+      {{ with $p.email }}<li><span>Email</span><a href="mailto:{{ . }}">{{ . }}</a></li>{{ end }}
+      {{ with $p.phone }}<li><span>Phone</span><span>{{ . }}</span></li>{{ end }}
+      {{ with $p.timezone }}<li><span>Timezone</span><span>{{ . }}</span></li>{{ end }}
+      {{ with $p.citizenship }}<li><span>Citizenship</span><span>{{ . }}</span></li>{{ end }}
+      {{ with $p.website }}<li><span>Website</span><a href="{{ . }}" target="_blank" rel="noreferrer">{{ replaceRE "^https?://" "" . }}</a></li>{{ end }}
+      {{ with $p.linkedin }}<li><span>LinkedIn</span><a href="https://linkedin.com/in/{{ . }}" target="_blank" rel="noreferrer">{{ . }}</a></li>{{ end }}
+      {{ with $p.github }}<li><span>GitHub</span><a href="https://github.com/{{ . }}" target="_blank" rel="noreferrer">{{ . }}</a></li>{{ end }}
+      {{ with $p.twitter }}<li><span>X / Twitter</span><a href="https://x.com/{{ strings.TrimPrefix "@" . }}" target="_blank" rel="noreferrer">{{ . }}</a></li>{{ end }}
+    </ul>
+  {{ end }}
+</section>
+
+{{ with $p.languages }}
+  {{ if gt (len .) 0 }}
+    <section class="card section-block sidebar-card">
+      <div class="section-heading">
+        <p class="eyebrow">Communication</p>
+        <h2>Languages</h2>
+      </div>
+      <div class="stack-list">
+        {{ range . }}
+          {{ if or .name .level }}
+            <div class="stack-list__item">
+              {{ with .name }}<strong>{{ . }}</strong>{{ end }}
+              {{ with .level }}<span>{{ . }}</span>{{ end }}
+            </div>
+          {{ end }}
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+{{ end }}
+
+{{ with $p.education }}
+  {{ if gt (len .) 0 }}
+    <section class="card section-block sidebar-card">
+      <div class="section-heading">
+        <p class="eyebrow">Foundation</p>
+        <h2>Education</h2>
+      </div>
+      <div class="stack-list">
+        {{ range . }}
+          <article class="education-item">
+            {{ with .degree }}<h3>{{ . }}</h3>{{ end }}
+            {{ with .institution }}<p class="muted">{{ . }}</p>{{ end }}
+            {{ with .period }}<p class="pill">{{ . }}</p>{{ end }}
+          </article>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+{{ end }}
+
+{{ with $p.skills }}
+  {{ if gt (len .) 0 }}
+    <section class="card section-block sidebar-card">
+      <div class="section-heading">
+        <p class="eyebrow">Capabilities</p>
+        <h2>Skills</h2>
+      </div>
+      <div class="skill-list">
+        {{ range . }}
+          {{ if .name }}
+            <div class="skill-list__item">
+              <div class="skill-list__label">
+                <span>{{ .name }}</span>
+                {{ with .level }}<span>{{ . }}%</span>{{ end }}
+              </div>
+              {{ with .level }}
+                <div class="skill-list__bar">
+                  <span style="width: {{ . }}%"></span>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+{{ end }}
