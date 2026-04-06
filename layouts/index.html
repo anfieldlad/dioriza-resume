@@ -48,23 +48,8 @@
     {{- with .Params.linkedin }}{{ $links = $links | append (printf "https://linkedin.com/in/%s" .) }}{{ end -}}
     {{- with .Params.github }}{{ $links = $links | append (printf "https://github.com/%s" .) }}{{ end -}}
     {{- with .Params.twitter }}{{ $links = $links | append (printf "https://x.com/%s" (strings.TrimPrefix "@" .)) }}{{ end -}}
-    {{- $person := dict
-      "@context" "https://schema.org"
-      "@type" "Person"
-      "name" .Params.name
-      "url" .Site.BaseURL
-      "image" (absURL .Params.avatar)
-      "jobTitle" .Params.tagline
-      "description" $description
-      "email" (printf "mailto:%s" .Params.email)
-      "telephone" .Params.phone
-      "address" (dict
-        "@type" "PostalAddress"
-        "addressLocality" .Params.location
-        "addressCountry" .Params.citizenship
-      )
-      "sameAs" $links
-    -}}
+    {{- $address := dict "@type" "PostalAddress" "addressLocality" .Params.location "addressCountry" .Params.citizenship -}}
+    {{- $person := dict "@context" "https://schema.org" "@type" "Person" "name" .Params.name "url" .Site.BaseURL "image" (absURL .Params.avatar) "jobTitle" .Params.tagline "description" $description "email" (printf "mailto:%s" .Params.email) "telephone" .Params.phone "address" $address "sameAs" $links -}}
     <script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>
   </head>
   <body>
