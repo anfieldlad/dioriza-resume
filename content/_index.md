@@ -1,7 +1,7 @@
 ---
 title: "Bobby Ananta Dioriza"
-seoTitle: "Bobby Ananta Dioriza | Technical Lead / Software Engineer"
-description: "Professional resume of Bobby Ananta Dioriza, Technical Lead and Software Engineer with experience in scalable systems, software architecture, and team leadership."
+seoTitle: "Bobby Ananta Dioriza | Technical Lead / Vibe Coder"
+description: "Technical resume of Bobby Ananta Dioriza, Technical Lead and Vibe Coder with experience in scalable systems, software architecture, and team leadership."
 name: "Bobby Ananta Dioriza"
 tagline: "Technical Lead | Vibe Coder"
 avatar: "/images/1597739542302.jpg"
