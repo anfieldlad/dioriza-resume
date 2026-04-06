@@ -3,8 +3,34 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ .Title }}</title>
-    <meta name="description" content="{{ with .Params.summary }}{{ . | plainify | truncate 160 }}{{ else }}Resume{{ end }}" />
+    {{ $title := cond (isset .Params "seotitle") .Params.seoTitle .Title }}
+    {{ $description := cond (isset .Params "description") .Params.description (cond (isset .Params "summary") (.Params.summary | plainify | truncate 160) "Resume") }}
+    {{ $canonical := .Permalink }}
+    {{ $ogImage := absURL "og-image.svg?v=1" }}
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $description }}" />
+    <meta name="author" content="{{ .Params.name }}" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="theme-color" content="#101114" />
+    <link rel="canonical" href="{{ $canonical }}" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:site_name" content="{{ .Site.Title }}" />
+    <meta property="og:title" content="{{ $title }}" />
+    <meta property="og:description" content="{{ $description }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ $canonical }}" />
+    <meta property="og:image" content="{{ $ogImage }}" />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="{{ $title }}" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ $title }}" />
+    <meta name="twitter:description" content="{{ $description }}" />
+    <meta name="twitter:image" content="{{ $ogImage }}" />
+    <meta name="twitter:image:alt" content="{{ $title }}" />
+    {{ with .Params.twitter }}<meta name="twitter:site" content="{{ . }}" />{{ end }}
     {{ $styles := resources.Get "css/main.css" | minify | fingerprint }}
     {{ $themeScript := resources.Get "js/theme.js" | minify | fingerprint }}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,8 +39,33 @@
     <link rel="icon" type="image/png" href="/favicon.png?v=2" />
     <link rel="shortcut icon" href="/favicon.png?v=2" />
     <link rel="apple-touch-icon" href="/favicon.png?v=2" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" />
     <script src="{{ $themeScript.RelPermalink }}" integrity="{{ $themeScript.Data.Integrity }}"></script>
+    {{- $links := slice -}}
+    {{- with .Params.website }}{{ $links = $links | append . }}{{ end -}}
+    {{- with .Params.blog }}{{ $links = $links | append . }}{{ end -}}
+    {{- with .Params.linkedin }}{{ $links = $links | append (printf "https://linkedin.com/in/%s" .) }}{{ end -}}
+    {{- with .Params.github }}{{ $links = $links | append (printf "https://github.com/%s" .) }}{{ end -}}
+    {{- with .Params.twitter }}{{ $links = $links | append (printf "https://x.com/%s" (strings.TrimPrefix "@" .)) }}{{ end -}}
+    {{- $person := dict
+      "@context" "https://schema.org"
+      "@type" "Person"
+      "name" .Params.name
+      "url" .Site.BaseURL
+      "image" (absURL .Params.avatar)
+      "jobTitle" .Params.tagline
+      "description" $description
+      "email" (printf "mailto:%s" .Params.email)
+      "telephone" .Params.phone
+      "address" (dict
+        "@type" "PostalAddress"
+        "addressLocality" .Params.location
+        "addressCountry" .Params.citizenship
+      )
+      "sameAs" $links
+    -}}
+    <script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>
   </head>
   <body>
     {{ $sidebarRight := ne .Params.sidebarPosition "left" }}

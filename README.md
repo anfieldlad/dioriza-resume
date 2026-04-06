@@ -66,7 +66,7 @@ If `hugo` is newly installed and not yet available in the current shell, restart
 Generate the production site:
 
 ```powershell
-hugo
+hugo --cleanDestinationDir
 ```
 
 The generated static site will be available in:

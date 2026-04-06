@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313/"
+baseURL = "https://bobby.dioriza.com/"
 languageCode = "en-us"
 title = "Bobby Ananta Dioriza"
 
@@ -6,3 +6,10 @@ title = "Bobby Ananta Dioriza"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+[sitemap]
+  changeFreq = "monthly"
+  priority = 0.8
+  filename = "sitemap.xml"
+
+[taxonomies]

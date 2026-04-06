@@ -1,0 +1,16 @@
+{
+  "name": "Bobby Ananta Dioriza",
+  "short_name": "Dioriza Resume",
+  "description": "Professional resume of Bobby Ananta Dioriza.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#101114",
+  "theme_color": "#101114",
+  "icons": [
+    {
+      "src": "/favicon.png?v=2",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

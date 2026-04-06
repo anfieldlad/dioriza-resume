@@ -1,5 +1,7 @@
 ---
 title: "Bobby Ananta Dioriza"
+seoTitle: "Bobby Ananta Dioriza | Technical Lead / Software Engineer"
+description: "Professional resume of Bobby Ananta Dioriza, Technical Lead and Software Engineer with experience in scalable systems, software architecture, and team leadership."
 name: "Bobby Ananta Dioriza"
 tagline: "Technical Lead | Vibe Coder"
 avatar: "/images/1597739542302.jpg"
@@ -13,6 +15,7 @@ blog: "https://blog.dioriza.com"
 linkedin: "bobananta"
 github: "anfieldlad"
 twitter: "@bobby_dioriza"
+location: "Jakarta, Indonesia"
 summary: >
   I am a Software Engineer with over a decade of experience building scalable
   applications across the financial sector. I specialize in designing
