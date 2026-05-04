@@ -1,9 +1,9 @@
 ---
 title: "Bobby Ananta Dioriza"
-seoTitle: "Bobby Ananta Dioriza | Technical Lead / Vibe Coder"
-description: "Technical resume of Bobby Ananta Dioriza, Technical Lead and Vibe Coder with experience in scalable systems, software architecture, and team leadership."
+seoTitle: "Bobby Ananta Dioriza | Technical Lead / Agentic AI Engineer"
+description: "Technical resume of Bobby Ananta Dioriza, Technical Lead and Agentic AI Engineer with experience in scalable systems, software architecture, and team leadership."
 name: "Bobby Ananta Dioriza"
-tagline: "Technical Lead | Vibe Coder"
+tagline: "Technical Lead | Agentic AI Engineer"
 avatar: "/images/1597739542302.jpg"
 sidebarPosition: "right"
 email: "bobby.dioriza@gmail.com"
